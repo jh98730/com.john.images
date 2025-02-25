@@ -8,12 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
+    @State private var message = "Welcome to the Zoo"
+    @State private var showImage0 = "image0"
+    @State private var showImage1 = "image1"
+    @State private var showImage: String = " "
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Spacer()
+            Image(showImage)
+                .resizable()
+                .scaledToFit()
+                .clipShape(RoundedRectangle(cornerRadius: 30))
+                .shadow(radius: 30)
+            Text(message)
+                .font(.largeTitle)
+                .fontWeight(.heavy)
+                .foregroundStyle(.red)
+            
+            Spacer()
+            
+            Button("Toggle Image") {
+                showImage = (showImage==showImage0 ? showImage1 : showImage0)
+            }
+            .buttonStyle(.borderedProminent)
+            .font(.title2)
+            
+            
         }
         .padding()
     }
